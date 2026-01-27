@@ -17,12 +17,12 @@ import androidx.compose.ui.unit.dp
 
 //popBackStack() en ruta a WELCOME
 @Composable
-fun HomeScreen(onNavigate : () -> Unit) {
+fun HomeScreen(onNavigateWelc : () -> Unit) {
 
     Column (modifier = Modifier.padding(50.dp)) {
 
         Text("INICIO / HOME")
-        Button(onClick = { onNavigate() }) {
+        Button(onClick = { onNavigateWelc() }) {
             Text("Go Welcome")
         }
     }

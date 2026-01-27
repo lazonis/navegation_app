@@ -22,13 +22,17 @@ fun Navigation(){
         {
             WelcomeScreen(
                 //busca el id "home" y crea un composable de tipo HomeScreen
-                { nController.navigate("home") }
+                { nController.navigate("home")},
+                {nController.navigate("denied")}
             )
         }
         composable("home"){
             //Teniendo en principio dos pantallas, popBackStack elimina la última
             //de la pila -> en este caso siempre "home"
             HomeScreen({nController.popBackStack() })
+        }
+        composable("denied"){
+            DeniedScreen({nController.navigate("")})
         }
 
     }
