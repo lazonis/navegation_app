@@ -1,2 +1,23 @@
 package com.example.test_navegacion.screens
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+
+
+@Composable
+fun WelcomeScreen(onClick : () -> Unit){
+
+    Text( text = "Pantalla de bienvenida" )
+
+    Button( onClick = {onClick()}, modifier = Modifier.padding(50.dp)){
+
+        Text( text = "Ir a Home")
+
+    }
+
+
+}
