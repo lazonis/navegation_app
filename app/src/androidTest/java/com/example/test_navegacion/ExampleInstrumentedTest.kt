@@ -1,4 +1,4 @@
-package com.example.test_nvegacion
+package com.example.test_navegacion
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.example.test_nvegacion
+package com.example.test_navegacion
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.test_nvegacion.ui.theme.Test_nvegacionTheme
+import com.example.test_navegacion.ui.theme.Test_nvegacionTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
