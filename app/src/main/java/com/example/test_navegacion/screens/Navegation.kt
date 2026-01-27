@@ -32,7 +32,7 @@ fun Navigation(){
             HomeScreen({nController.popBackStack() })
         }
         composable("denied"){
-            DeniedScreen({nController.navigate("")})
+            DeniedScreen({nController.popBackStack()})
         }
 
     }
