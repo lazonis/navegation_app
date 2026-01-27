@@ -11,37 +11,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.test_navegacion.ui.theme.Test_nvegacionTheme
+import com.example.test_navegacion.screens.Navigation
+import com.example.test_navegacion.ui.theme.Test_navegacionTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Test_nvegacionTheme {
-                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            Test_navegacionTheme {
+                Navigation()
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Test_nvegacionTheme {
-        Greeting("Android")
-    }
-}
