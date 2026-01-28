@@ -30,9 +30,10 @@ fun Navegation(){
 
         }
 
+
         composable ("home") {
 
-            HomeScreen(onNavigationWelcome = { navCont.navigate("welcome") },
+            HomeScreen(onNavigationWelcome = { navCont.popBackStack() },
                         onNavigationDetail = { navCont.navigate("detail")},
                         onNavigationBuy = {navCont.navigate("buy")})
 
@@ -40,15 +41,31 @@ fun Navegation(){
 
         composable ("detail") {
 
-            DetailScreen(onNavigationHome = {navCont.navigate("home")},
+            DetailScreen(onNavigationHome = {navCont.navigate("home"){
+
+                            popUpTo("home"){
+                                inclusive = true
+                            }
+                        } },
+
                          onNavigationBuy = {navCont.navigate("buy")} )
 
         }
 
         composable("buy"){
 
-            BuyScreen(onNavigationWelcome = {navCont.navigate("welcome")},
-                      onNavigationHome = {navCont.navigate("home")},
+            BuyScreen(onNavigationWelcome = {navCont.navigate("welcome"){
+                        popUpTo("welcome"){
+                            inclusive = true
+                        }
+            } },
+
+                      onNavigationHome = {navCont.navigate("home"){
+                          popUpTo("home"){
+                              inclusive = true
+                          }
+                      }},
+
                       onNavigationDetail = {navCont.navigate("Detail")})
 
         }
