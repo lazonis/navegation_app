@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 
 //popBackStack() en ruta a WELCOME
 @Composable
-fun HomeScreen(onNavigateWelc : () -> Unit) {
+fun HomeScreen(onNavigateWelc : () -> Unit, onNavigateDetail : () -> Unit, onNavigateBuy :() -> Unit) {
 
     Column (modifier = Modifier.padding(50.dp)) {
 

@@ -18,23 +18,53 @@ fun Navigation(){
         startDestination = "welcome"
     )
     {
+
         composable("welcome") //route = id de la pantalla donde navegamos
         {
             WelcomeScreen(
                 //busca el id "home" y crea un composable de tipo HomeScreen
                 { nController.navigate("home")},
-                {nController.navigate("denied")}
+                {nController.navigate("denied")},
             )
         }
+
+
         composable("home"){
             //Teniendo en principio dos pantallas, popBackStack elimina la última
             //de la pila -> en este caso siempre "home"
-            HomeScreen({nController.popBackStack() })
-        }
-        composable("denied"){
-            DeniedScreen({nController.popBackStack()})
+            HomeScreen(
+                //Reset
+                {nController.popBackStack() },
+                //Detalles
+                {nController.navigate("detail")},
+                //Compra
+                {nController.navigate("buy")}
+            )
         }
 
+
+        composable("denied"){
+            DeniedScreen(
+                {nController.popBackStack()}
+            )
+        }
+
+
+        composable("detail"){
+            DetailScreen(
+                {nController.navigate("home")},
+                {nController.navigate("buy")}
+            )
+        }
+
+
+        composable("buy"){
+            BuyScreen(
+                {nController.navigate("home")},
+                {nController.navigate("detail")},
+                {nController.navigate("welcome")}
+            )
+        }
     }
 
 }
