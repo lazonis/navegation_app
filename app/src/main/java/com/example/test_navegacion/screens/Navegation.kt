@@ -13,19 +13,26 @@ fun Navegation(){
 
     NavHost(
         navController = navCont,
-        startDestination = "home"
+        startDestination = "welcome"
     ) {
 
         composable ("home") {
 
-            HomeScreen(onClick = { navCont.navigate("welcome")})
+            HomeScreen(onClick = { navCont.navigate("welcome") })
+
 
 
         }
 
         composable("welcome") {
 
-            WelcomeScreen(onClick = { navCont.navigate("home")} )
+            WelcomeScreen(onNavigationHome = { navCont.navigate("home")}, onNavigationDenied = { navCont.navigate("denied")})
+
+        }
+
+        composable("denied") {
+
+            DeniedScreen()
 
         }
 

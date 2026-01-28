@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -21,25 +22,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             Test_navegacionTheme {
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
-                   Navegation()
+
+                    Column(modifier = Modifier.padding(innerPadding)) {
+                        Navegation()
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Test_navegacionTheme {
-        Navegation()
     }
 }
