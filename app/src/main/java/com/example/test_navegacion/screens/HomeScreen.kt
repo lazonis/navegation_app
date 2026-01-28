@@ -16,21 +16,36 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 
-fun HomeScreen(onClick: () -> Unit){
+fun HomeScreen(onNavigationWelcome: () -> Unit, onNavigationDetail: () -> Unit, onNavigationBuy: () -> Unit){
 
 
     Column(modifier = Modifier.padding(50.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
-    Text( text = "(Pantalla Home)" )
+    Text( text = "(Pantalla Home)")
 
         Spacer(modifier = Modifier.padding(20.dp))
 
 
-    Button(onClick = {onClick()}) {
+    Button(onClick = {onNavigationWelcome()}) {
 
         Text("Ir a Welcome")
     }
+
+        Spacer(modifier = Modifier.padding(20.dp))
+
+    Button(onClick = {onNavigationDetail()}){
+
+        Text("Ir a Detail")
+    }
+        Spacer(modifier = Modifier.padding(20.dp))
+
+
+    Button(onClick = {onNavigationBuy()}){
+
+            Text("Ir a Buy")
+    }
+
 
     }
 }

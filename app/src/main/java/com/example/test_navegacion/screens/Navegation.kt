@@ -16,23 +16,40 @@ fun Navegation(){
         startDestination = "welcome"
     ) {
 
-        composable ("home") {
-
-            HomeScreen(onClick = { navCont.navigate("welcome") })
-
-
-
-        }
 
         composable("welcome") {
 
-            WelcomeScreen(onNavigationHome = { navCont.navigate("home")}, onNavigationDenied = { navCont.navigate("denied")})
+            WelcomeScreen(onNavigationHome = { navCont.navigate("home")},
+                          onNavigationDenied = { navCont.navigate("denied")})
 
         }
 
         composable("denied") {
 
             DeniedScreen()
+
+        }
+
+        composable ("home") {
+
+            HomeScreen(onNavigationWelcome = { navCont.navigate("welcome") },
+                        onNavigationDetail = { navCont.navigate("detail")},
+                        onNavigationBuy = {navCont.navigate("buy")})
+
+        }
+
+        composable ("detail") {
+
+            DetailScreen(onNavigationHome = {navCont.navigate("home")},
+                         onNavigationBuy = {navCont.navigate("buy")} )
+
+        }
+
+        composable("buy"){
+
+            BuyScreen(onNavigationWelcome = {navCont.navigate("welcome")},
+                      onNavigationHome = {navCont.navigate("home")},
+                      onNavigationDetail = {navCont.navigate("Detail")})
 
         }
 
