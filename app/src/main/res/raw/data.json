@@ -1,0 +1,15 @@
+
+[
+  {"id":"0","nombre":"Persona 3 Reload","precio":"40.99","plataforma":["PC", "XBOX", "PS","DS"],"fechaSalida" :"02-02-2024", "imgNombre": "persona_3_portada"},
+  {"id":"1","nombre":"Hollow Knight","precio":"20.00","plataforma":["PC", "XBOX", "PS", "DS"],"fechaSalida" :"24-02-2017","imgNombre": "hk_portada"},
+  {"id":"2","nombre":"Celeste","precio":"10.50","plataforma":["PC", "XBOX", "PS", "DS"],"fechaSalida" :"25-01-2018","imgNombre": "celeste_portada"},
+  {"id":"3","nombre":"Undertale","precio":"9.90","plataforma":["PC", "XBOX", "PS", "DS"],"fechaSalida" :"15-10-2015","imgNombre": "undertale_portada"},
+  {"id":"4","nombre":"Rayman","precio":"10.70","plataforma":["PC", "XBOX", "PS", "DS"],"fechaSalida" :"1-10-1995","imgNombre": "rayman_portada"},
+
+  {"id":"5","nombre":"Age of Empires","precio":"10.99","plataforma":["PC", "XBOX", "PS","DS"],"fechaSalida" :"13-11-1997","imgNombre": "ageofempires_portada"},
+  {"id":"6","nombre":"Doom","precio":"10.00","plataforma":["PC", "XBOX", "PS", "DS"],"fechaSalida" :"13-05-2016","imgNombre": "doom_portada"},
+  {"id":"7","nombre":"Plants vs Zombies","precio":"5.50","plataforma":["PC", "XBOX", "PS", "DS"],"fechaSalida" :"05-05-2009","imgNombre": "pvsz__portada"},
+  {"id":"8","nombre":"Half life 2","precio":"25.90","plataforma":["PC", "XBOX", "PS", "DS"],"fechaSalida" :"19-11-2004","imgNombre": "halflife_portada"},
+  {"id":"9","nombre":"Balatro","precio":"4.99","plataforma":["PC", "XBOX", "PS", "DS"],"fechaSalida" :"09-12-2024", "imgNombre": "balatro_portada"}
+
+]
