@@ -34,8 +34,7 @@ fun Navegation(){
         composable ("home") {
 
             HomeScreen(onNavigationWelcome = { navCont.popBackStack() },
-                        onNavigationDetail = { navCont.navigate("detail")},
-                        onNavigationBuy = {navCont.navigate("buy")})
+                        onNavigationDetail = { navCont.navigate("detail")})
 
         }
 
@@ -44,7 +43,7 @@ fun Navegation(){
             DetailScreen(onNavigationHome = {navCont.navigate("home"){
 
                             popUpTo("home"){
-                                inclusive = true
+                                inclusive = false
                             }
                         } },
 
@@ -62,7 +61,7 @@ fun Navegation(){
 
                       onNavigationHome = {navCont.navigate("home"){
                           popUpTo("home"){
-                              inclusive = true
+                              inclusive = false
                           }
                       }},
 

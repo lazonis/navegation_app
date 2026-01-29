@@ -23,7 +23,7 @@ fun BuyScreen(onNavigationWelcome: () -> Unit, onNavigationHome: () -> Unit, onN
         Spacer(modifier = Modifier.padding(20.dp))
 
         Button(onClick = {onNavigationWelcome()}) {
-            Text("Ir a Home")
+            Text("Ir a Welcome")
         }
 
         Spacer(modifier = Modifier.padding(20.dp))

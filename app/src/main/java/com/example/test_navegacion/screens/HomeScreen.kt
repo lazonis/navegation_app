@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 
-fun HomeScreen(onNavigationWelcome: () -> Unit, onNavigationDetail: () -> Unit, onNavigationBuy: () -> Unit){
+fun HomeScreen(onNavigationWelcome: () -> Unit, onNavigationDetail: () -> Unit){
 
 
     Column(modifier = Modifier.padding(50.dp),
@@ -40,11 +40,6 @@ fun HomeScreen(onNavigationWelcome: () -> Unit, onNavigationDetail: () -> Unit, 
     }
         Spacer(modifier = Modifier.padding(20.dp))
 
-
-    Button(onClick = {onNavigationBuy()}){
-
-            Text("Ir a Buy")
-    }
 
 
     }
