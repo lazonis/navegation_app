@@ -1,6 +1,9 @@
 package com.example.test_navegacion.screens
 
+import android.content.Context
+import android.widget.ImageView
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ContextualFlowRow
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -14,6 +17,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+//PARA UTILIZAR MIS PROPIOS RECURSOS DEBES IMPLEMENTARLA DESDE TU PROPIO PROYECTO
+import com.example.test_navegacion.R
 @Composable
 fun WelcomeScreen(onNavigateHome: () -> Unit, onNavigateDenied: () -> Unit) {
 
