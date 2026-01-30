@@ -27,8 +27,7 @@ class MainActivity : ComponentActivity() {
 
                     Column(modifier = Modifier.padding(innerPadding)) {
                         Navegation()
-                        val context = LocalContext.current
-                        getV(context)
+
                     }
                 }
             }

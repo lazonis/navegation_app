@@ -1,12 +1,9 @@
 package com.example.test_navegacion.data
 
 import android.content.Context
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import com.example.test_navegacion.R
 import com.google.gson.Gson
 import java.io.InputStreamReader
-import java.util.Objects
 
 data class Videogame(
     val id: Int,
@@ -18,7 +15,7 @@ data class Videogame(
 )
 
 
-fun getV(context : Context){
+fun getV(context : Context) : List<Videogame>{
 
     val inputStream = context.resources.openRawResource(R.raw.data)
 
@@ -26,6 +23,6 @@ fun getV(context : Context){
 
     val listaJuegos = Gson().fromJson(reader, Array<Videogame>::class.java)
 
-    listaJuegos.forEach { println(it.nombre) }
+    return listaJuegos.toList()
 
 }

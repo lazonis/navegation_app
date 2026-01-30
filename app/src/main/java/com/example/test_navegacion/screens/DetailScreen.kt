@@ -9,9 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.test_navegacion.data.Videogame
 
 @Composable
-fun DetailScreen(onNavigationHome: () -> Unit, onNavigationBuy: () -> Unit){
+fun DetailScreen(onNavigationHome: () -> Unit, onNavigationBuy: () -> Unit, game : Videogame){
 
     Column(modifier = Modifier.padding(50.dp),
 
@@ -31,6 +32,10 @@ fun DetailScreen(onNavigationHome: () -> Unit, onNavigationBuy: () -> Unit){
         Button(onClick = {onNavigationBuy()}) {
             Text("Ir a Buy")
         }
+
+        Text(text = game.nombre)
+        Text(text = game.fechaSalida)
+
     }
 
 
