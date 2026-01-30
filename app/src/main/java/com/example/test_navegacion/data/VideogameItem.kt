@@ -1,8 +1,6 @@
 package com.example.test_navegacion.data
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 @Serializable
 data class VideogameItem(
@@ -13,3 +11,5 @@ data class VideogameItem(
     val plataforma: List<String>,
     val precio: String
 )
+
+
