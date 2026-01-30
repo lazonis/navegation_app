@@ -11,10 +11,10 @@ import java.util.Objects
 data class Videogame(
     val id: Int,
     val nombre: String,
-    val launchYear: Int,
-    val image: Int,
-    val company: String,
     val precio: Double,
+    val plataforma : List<String>,
+    val fechaSalida : String,
+    val imgNombre : String
 )
 
 
