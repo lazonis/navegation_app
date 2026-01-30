@@ -66,7 +66,7 @@ fun Navegation(){
                 DetailScreen(onNavigationHome = {navCont.navigate("home"){
 
                     popUpTo("home"){
-                        inclusive = false
+                        inclusive = true
                     }
                 } },
 
@@ -88,7 +88,7 @@ fun Navegation(){
 
                       onNavigationHome = {navCont.navigate("home"){
                           popUpTo("home"){
-                              inclusive = false
+                              inclusive = true
                           }
                       }},
 

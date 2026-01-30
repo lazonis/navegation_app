@@ -1,5 +1,6 @@
 package com.example.test_navegacion.screens
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +24,8 @@ import androidx.compose.ui.unit.dp
 fun WelcomeScreen(onNavigationHome : () -> Unit, onNavigationDenied : () -> Unit){
 
     var text by remember {mutableStateOf("")}
+
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
 
     Column(modifier = Modifier.padding(50.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
@@ -55,6 +58,7 @@ fun WelcomeScreen(onNavigationHome : () -> Unit, onNavigationDenied : () -> Unit
 
         }
 
+    }
     }
 
 }
