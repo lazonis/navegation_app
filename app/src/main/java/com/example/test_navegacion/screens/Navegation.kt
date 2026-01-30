@@ -71,7 +71,7 @@ fun Navegation(){
                 } },
 
                     onNavigationBuy = {navCont.navigate("buy")},
-                    game = gameFound)
+                    game = gameFound, context = context)
 
             }
 
