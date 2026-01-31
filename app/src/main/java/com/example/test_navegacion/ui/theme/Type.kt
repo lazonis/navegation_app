@@ -24,7 +24,7 @@ val Typography = Typography(
     labelLarge = TextStyle(
         fontFamily = personaFont,
         fontWeight = FontWeight.Medium,
-        fontSize = 14.sp,
+        fontSize = 13.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.1.sp
     )
