@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.example.test_navegacion.data.Videogame
 
 @Composable
-fun DetailScreen(game: Videogame, onNavigateToHome: () -> Unit, onNavigateBuy: () -> Unit) {
+fun DetailScreen(game: Videogame, onNavigationHome: () -> Unit, onNavigationBuy: () -> Unit) {
 
     Column(
         modifier = Modifier.padding(50.dp),
@@ -28,13 +28,13 @@ fun DetailScreen(game: Videogame, onNavigateToHome: () -> Unit, onNavigateBuy: (
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-        Button(onClick = { onNavigateToHome() }) {
+        Button(onClick = { onNavigationHome() }) {
             Text("Ir a Home")
         }
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-        Button(onClick = { onNavigateBuy() }) {
+        Button(onClick = { onNavigationBuy() }) {
             Text("Ir a Buy")
         }
 

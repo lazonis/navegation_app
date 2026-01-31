@@ -13,7 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalResources
 import com.example.test_navegacion.data.Videogame
-import com.example.test_navegacion.screens.Navigation
+import com.example.test_navegacion.screens.Navegation
 import com.example.test_navegacion.ui.theme.Test_navegacionTheme
 import kotlinx.serialization.json.Json
 
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
 
                     Column(modifier = Modifier.padding(innerPadding)) {
-                        Navigation(getGameList())
+                        Navegation(getGameList())
 
                     }
                 }

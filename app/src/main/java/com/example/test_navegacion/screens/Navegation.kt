@@ -2,7 +2,6 @@ package com.example.test_navegacion.screens
 
 import android.content.Context
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,7 +11,7 @@ import com.example.test_navegacion.data.Videogame
 
 @Composable
 
-fun Navegation(gameList : List<Videogame>, context : Context){
+fun Navegation(gameList : List<Videogame>){
 
     val navCont = rememberNavController()
 
@@ -41,6 +40,7 @@ fun Navegation(gameList : List<Videogame>, context : Context){
 
             HomeScreen(onNavigationWelcome = { navCont.popBackStack() },
                         onNavigationDetail = { idClick -> navCont.navigate("detail/$idClick") },
+                        onNavigationBuy = {navCont.navigate("buy")},
                         lgames = gameList)
 
         }
@@ -64,7 +64,7 @@ fun Navegation(gameList : List<Videogame>, context : Context){
                 } },
 
                     onNavigationBuy = {navCont.navigate("buy")},
-                    game = gameFound, context = context)
+                    game = gameFound)
 
             }
 

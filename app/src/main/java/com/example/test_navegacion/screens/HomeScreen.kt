@@ -19,23 +19,24 @@ import androidx.compose.ui.platform.LocalResources
 
 @Composable
 fun HomeScreen(
-    onNavigateWelc: () -> Unit,
-    onNavigateDetail: (String) -> Unit,
-    onNavigateBuy: () -> Unit,
+    onNavigationWelcome: () -> Unit,
+    onNavigationDetail: (String) -> Unit,
+    onNavigationBuy: () -> Unit,
     lgames : List<Videogame>
 ) {
     //Guardamos el context que nos permite acceder a los recursos de dentro de /res/raw
     Column(modifier = Modifier.padding(50.dp)) {
         Text("INICIO / HOME")
-        Button(onClick = { onNavigateWelc() }) {
+        Button(onClick = { onNavigationWelcome() }) {
             Text("Go Welcome")
         }
         LazyColumn{
             items(lgames) { game ->
                 Text(game.nombre)
                 //Al hacer click en el botón, elevamos el id hacia arriba
-                Button({onNavigateDetail(game.nombre)}) {
-                    Text("DETALLES")
+                Button(onClick = {onNavigationDetail(game.id.toString())}){
+
+                    Text("Ir a Detail")
                 }
             }
         }
