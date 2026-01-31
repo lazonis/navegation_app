@@ -35,6 +35,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+//Como el método remember (lambda) necesita una función @composable
+//La declarmos aquí y se lo pasamos al Navegation
 @Composable
 fun getGameList(): List<Videogame> {
     val resources = LocalResources.current
