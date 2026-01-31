@@ -11,30 +11,35 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 
-
 @Composable
-fun BuyScreen(onNavigationWelcome: () -> Unit, onNavigationHome: () -> Unit, onNavigationDetail: () -> Unit){
+fun BuyScreen(
+    onNavigationWelcome: () -> Unit,
+    onNavigationHome: () -> Unit,
+    onNavigationDetail: () -> Unit,
+) {
 
-    Column(modifier = Modifier.padding(50.dp),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.padding(50.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
 
         Text(text = "(Pantalla Buy)")
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-        Button(onClick = {onNavigationWelcome()}) {
+        Button(onClick = { onNavigationWelcome() }) {
             Text("Ir a Welcome")
         }
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-        Button(onClick = {onNavigationHome()}) {
+        Button(onClick = { onNavigationHome() }) {
             Text("Ir a Home")
         }
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-        Button(onClick = {onNavigationDetail()}) {
+        Button(onClick = { onNavigationDetail() }) {
             Text("Ir a Detail")
         }
 

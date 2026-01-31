@@ -11,10 +11,12 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 
-fun DeniedScreen(){
+fun DeniedScreen() {
 
-    Column(modifier = Modifier.padding(50.dp),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.padding(50.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
 
         Text(text = "(Pantalla Denied)")
 

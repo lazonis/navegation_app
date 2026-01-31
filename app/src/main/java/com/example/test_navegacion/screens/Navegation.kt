@@ -11,7 +11,7 @@ import com.example.test_navegacion.data.Videogame
 
 @Composable
 
-fun Navegation(gameList : List<Videogame>){
+fun Navegation(gameList: List<Videogame>) {
 
     val navCont = rememberNavController()
 
@@ -24,8 +24,9 @@ fun Navegation(gameList : List<Videogame>){
 
         composable("welcome") {
 
-            WelcomeScreen(onNavigationHome = { navCont.navigate("home")},
-                          onNavigationDenied = { navCont.navigate("denied")})
+            WelcomeScreen(
+                onNavigationHome = { navCont.navigate("home") },
+                onNavigationDenied = { navCont.navigate("denied") })
 
         }
 
@@ -36,56 +37,69 @@ fun Navegation(gameList : List<Videogame>){
         }
 
 
-        composable ("home") {
+        composable("home") {
 
-            HomeScreen(onNavigationWelcome = { navCont.popBackStack() },
-                        onNavigationDetail = { idClick -> navCont.navigate("detail/$idClick") },
-                        onNavigationBuy = {navCont.navigate("buy")},
-                        lgames = gameList)
+            HomeScreen(
+                onNavigationWelcome = { navCont.popBackStack() },
+                onNavigationDetail = { idClick -> navCont.navigate("detail/$idClick") },
+                onNavigationBuy = { navCont.navigate("buy") },
+                lgames = gameList
+            )
 
         }
 
-        composable ("detail/{idGame}",
-                    listOf(navArgument("idGame"){ type = NavType.IntType})) {
+        composable(
+            "detail/{idGame}",
+            listOf(navArgument("idGame") { type = NavType.IntType })
+        ) {
 
-            backStackEntry ->
+                backStackEntry ->
 
             val gameId = backStackEntry.arguments?.getInt("idGame") ?: 0
 
             val gameFound = gameList.find { it.id == gameId }
 
 
-            if(gameFound != null){
-                DetailScreen(onNavigationHome = {navCont.navigate("home"){
+            if (gameFound != null) {
+                DetailScreen(
+                    onNavigationHome = {
+                        navCont.navigate("home") {
 
-                    popUpTo("home"){
-                        inclusive = true
-                    }
-                } },
+                            popUpTo("home") {
+                                inclusive = true
+                            }
+                        }
+                    },
 
-                    onNavigationBuy = {navCont.navigate("buy")},
-                    game = gameFound)
+                    onNavigationBuy = { navCont.navigate("buy") },
+                    game = gameFound
+                )
 
             }
 
 
         }
 
-        composable("buy"){
+        composable("buy") {
 
-            BuyScreen(onNavigationWelcome = {navCont.navigate("welcome"){
-                        popUpTo("welcome"){
+            BuyScreen(
+                onNavigationWelcome = {
+                    navCont.navigate("welcome") {
+                        popUpTo("welcome") {
                             inclusive = true
                         }
-            } },
+                    }
+                },
 
-                      onNavigationHome = {navCont.navigate("home"){
-                          popUpTo("home"){
-                              inclusive = true
-                          }
-                      }},
+                onNavigationHome = {
+                    navCont.navigate("home") {
+                        popUpTo("home") {
+                            inclusive = true
+                        }
+                    }
+                },
 
-                      onNavigationDetail = {navCont.navigate("Detail")})
+                onNavigationDetail = { navCont.navigate("Detail") })
 
         }
 

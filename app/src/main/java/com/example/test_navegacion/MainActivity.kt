@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Test_navegacionTheme {
-                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
                     Column(modifier = Modifier.padding(innerPadding)) {
                         Navegation(getGameList())
@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun getGameList() : List<Videogame>{
+fun getGameList(): List<Videogame> {
     val resources = LocalResources.current
     //Variable que guarda una función anónima
     // -> generar lista de Objetos Videogame

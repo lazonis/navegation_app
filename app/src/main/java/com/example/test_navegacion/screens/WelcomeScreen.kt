@@ -21,56 +21,55 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun WelcomeScreen(onNavigationHome : () -> Unit, onNavigationDenied : () -> Unit){
+fun WelcomeScreen(onNavigationHome: () -> Unit, onNavigationDenied: () -> Unit) {
 
-    var text by remember {mutableStateOf("")}
+    var text by remember { mutableStateOf("") }
 
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
-    Column(modifier = Modifier.padding(50.dp),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = Modifier.padding(50.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-        Text(text = "(Pantalla Welcome)")
+            Text(text = "(Pantalla Welcome)")
 
 
-        Spacer(modifier = Modifier.padding(20.dp))
+            Spacer(modifier = Modifier.padding(20.dp))
 
-        TextField(
-            value = text,
-            onValueChange = { nuevoTexto -> text = nuevoTexto },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
+            TextField(
+                value = text,
+                onValueChange = { nuevoTexto -> text = nuevoTexto },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
 
-        Spacer(modifier = Modifier.padding(20.dp))
+            Spacer(modifier = Modifier.padding(20.dp))
 
-        Button(onClick = {
+            Button(onClick = {
 
-            if(validateAge(text)) {
-                onNavigationHome()
+                if (validateAge(text)) {
+                    onNavigationHome()
+                } else {
+                    onNavigationDenied()
+                }
             }
-            else {
-                onNavigationDenied()
+            ) {
+
+                Text(text = "Acceder")
+
             }
-        }
-        )  {
-
-            Text( text = "Acceder")
 
         }
-
-    }
     }
 
 }
 
 
-fun validateAge( text : String ) : Boolean {
+fun validateAge(text: String): Boolean {
 
-    if(text.isEmpty()){
+    if (text.isEmpty()) {
         return false
-    }
-
-    else {
+    } else {
 
         if (text.toInt() >= 18) {
             return true

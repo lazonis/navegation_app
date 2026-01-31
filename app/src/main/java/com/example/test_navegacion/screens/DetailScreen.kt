@@ -42,7 +42,13 @@ fun DetailScreen(game: Videogame, onNavigationHome: () -> Unit, onNavigationBuy:
         Text(text = game.fechaSalida)
 
         Image(
-            painter = painterResource(id = LocalContext.current.resources.getIdentifier(game.imgNombre, "drawable", LocalContext.current.packageName )),
+            painter = painterResource(
+                id = LocalContext.current.resources.getIdentifier(
+                    game.imgNombre,
+                    "drawable",
+                    LocalContext.current.packageName
+                )
+            ),
             contentDescription = "Imagen"
         )
 

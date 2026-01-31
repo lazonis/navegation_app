@@ -22,7 +22,7 @@ fun HomeScreen(
     onNavigationWelcome: () -> Unit,
     onNavigationDetail: (String) -> Unit,
     onNavigationBuy: () -> Unit,
-    lgames : List<Videogame>
+    lgames: List<Videogame>,
 ) {
     //Guardamos el context que nos permite acceder a los recursos de dentro de /res/raw
     Column(modifier = Modifier.padding(50.dp)) {
@@ -30,11 +30,11 @@ fun HomeScreen(
         Button(onClick = { onNavigationWelcome() }) {
             Text("Go Welcome")
         }
-        LazyColumn{
+        LazyColumn {
             items(lgames) { game ->
                 Text(game.nombre)
                 //Al hacer click en el botón, elevamos el id hacia arriba
-                Button(onClick = {onNavigationDetail(game.id.toString())}){
+                Button(onClick = { onNavigationDetail(game.id.toString()) }) {
 
                     Text("Ir a Detail")
                 }

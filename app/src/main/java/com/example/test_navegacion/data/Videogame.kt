@@ -10,8 +10,8 @@ data class Videogame(
     val id: Int,
     val nombre: String,
     val precio: Double,
-    val plataforma : List<String>,
-    val fechaSalida : String,
-    val imgNombre : String
+    val plataforma: List<String>,
+    val fechaSalida: String,
+    val imgNombre: String,
 )
 
