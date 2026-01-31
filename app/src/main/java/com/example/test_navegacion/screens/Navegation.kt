@@ -1,5 +1,6 @@
 package com.example.test_navegacion.screens
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
@@ -7,16 +8,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.test_navegacion.data.getVideogameList
+import com.example.test_navegacion.data.Videogame
 
 @Composable
 
-fun Navegation(){
+fun Navegation(gameList : List<Videogame>, context : Context){
 
     val navCont = rememberNavController()
 
-    val context = LocalContext.current
-    val gameList = getVideogameList(context)
 
     NavHost(
         navController = navCont,
@@ -41,8 +40,8 @@ fun Navegation(){
         composable ("home") {
 
             HomeScreen(onNavigationWelcome = { navCont.popBackStack() },
-                        onNavigationDetail = { idClick -> navCont.navigate("detail/$idClick")},
-                        gameList = gameList)
+                        onNavigationDetail = { idClick -> navCont.navigate("detail/$idClick") },
+                        lgames = gameList)
 
         }
 
