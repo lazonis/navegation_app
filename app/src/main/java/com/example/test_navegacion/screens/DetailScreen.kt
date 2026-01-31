@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
@@ -138,7 +139,8 @@ fun DetailScreen(
             // 1. IZQUIERDA: La Foto (Tamaño Fijo)
             Box(
                 modifier = Modifier
-                    .weight(0.5f).fillMaxHeight(),
+                    .weight(0.5f)
+                    .fillMaxHeight(),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
@@ -154,10 +156,11 @@ fun DetailScreen(
             }
             Column(
                 modifier = Modifier
-                    .fillMaxHeight().weight(0.5f)
+                    .fillMaxHeight()
+                    .weight(0.5f)
             ) {
                 //text1
-                showInfo(game,quantity)
+                showInfo(game, quantity)
             }
         }
     }
@@ -165,23 +168,70 @@ fun DetailScreen(
 
 //Hardcodeado a muerte -> TODO: Buscar una forma más eficiente
 @Composable
-fun showInfo(game : Videogame, quantity : Int){
-    Spacer(modifier = Modifier.height(20.dp))
-    Text(text = "Fecha salida: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
-    Text(text = "${game.fechaSalida}", fontSize = 15.sp)
-    //text2
-    Spacer(modifier = Modifier.height(40.dp))
-    Text(text = "Plataformas: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
-    Text(text = "${game.plataforma}", fontSize = 15.sp)
-    //text3
-    Spacer(modifier = Modifier.height(40.dp))
-    Text(text = "Precio: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
-    Text(text = "${game.precio} €", fontSize = 15.sp)
+fun showInfo(game: Videogame, quantity: Int) {
 
-    Spacer(modifier = Modifier.height(40.dp))
-    Text("Total uds: $quantity", fontWeight = FontWeight.Bold,  fontSize = 15.sp)
+    //FECHA SALIDA
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
+            .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+    ) {
+        Text(text = "Fecha salida: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
+        Text(text = "${game.fechaSalida}", fontSize = 15.sp)
+    }
     Spacer(modifier = Modifier.height(20.dp))
-    Text("Total a pagar: ${game.precio * quantity}", fontWeight = FontWeight.Bold,  fontSize = 15.sp)
+
+    //PLATAFORMAS
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
+            .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+    ) {
+        //text2
+        Text(text = "Plataformas: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
+        Text(text = "${game.plataforma}", fontSize = 15.sp)
+    }
+    Spacer(modifier = Modifier.height(20.dp))
+
+    //PRECIO
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
+            .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+    ) {
+        //text3
+        Text(text = "Precio: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
+        Text(text = "${game.precio} €", fontSize = 15.sp)
+    }
+    Spacer(modifier = Modifier.height(20.dp))
+
+    //TOTAL UNIDADES
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
+            .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+    ) {
+        Text("Total uds: $quantity", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+    }
+    Spacer(modifier = Modifier.height(30.dp))
+
+    //TOTAL PRECIO
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
+            .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+    ) {
+        Text(
+            "Total a pagar: ${game.precio * quantity}",
+            fontWeight = FontWeight.Bold,
+            fontSize = 15.sp
+        )
+    }
 }
 
 
