@@ -18,7 +18,7 @@ fun Navegation(gameList: List<Videogame>) {
     val navCont = rememberNavController()
 
     //Carrito -> estado global para guardar las cantidades elegidas de cada jueguito
-    var selectedItems = remember { mutableStateMapOf<Videogame,Int>() }
+    var selectedItems = remember { mutableStateMapOf<Videogame, Int>() }
 
 
     NavHost(
@@ -71,8 +71,7 @@ fun Navegation(gameList: List<Videogame>) {
                             }
                         }
                     },
-                    addToBuy = {
-                        addQuantity ->
+                    addToBuy = { addQuantity ->
                         val actualQuantity = selectedItems[gameFound] ?: 0
                         selectedItems[gameFound] = actualQuantity + addQuantity
                     },
@@ -95,7 +94,6 @@ fun Navegation(gameList: List<Videogame>) {
                         }
                     }
                 },
-
                 onNavigationHome = {
                     navCont.navigate("home") {
                         popUpTo("home") {
@@ -103,9 +101,10 @@ fun Navegation(gameList: List<Videogame>) {
                         }
                     }
                 },
-
-                onNavigationDetail = { navCont.navigate("Detail") })
-
+                selectedItems,
+                onRemoveGame = { game ->
+                    selectedItems.remove(game)
+                })
         }
 
     }

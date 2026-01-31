@@ -43,6 +43,7 @@ fun DetailScreen(
         Button(onClick = { onNavigationHome() }) {
             Text("←")
         }
+        Button(onNavigationBuy) {Text("GO TO CHART") }
         Text(text = "Details ${game.nombre}")
         Text(text = "${game.fechaSalida}")
         Text(text = "${game.precio} €")
@@ -76,6 +77,8 @@ fun DetailScreen(
             ),
             contentDescription = "Imagen"
         )
+
+
 
         Spacer(modifier = Modifier.padding(20.dp))
 
