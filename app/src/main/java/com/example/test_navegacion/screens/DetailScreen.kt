@@ -1,5 +1,7 @@
 package com.example.test_navegacion.screens
 
+import android.R
+import android.graphics.Color.alpha
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -67,7 +70,7 @@ fun DetailScreen(
     ) {
         Row(
             modifier = Modifier
-                .background(Color.Blue)
+                .background(Color.Transparent)
                 .fillMaxWidth()
                 .height(70.dp)
                 .padding(10.dp),
@@ -78,14 +81,15 @@ fun DetailScreen(
                 contentDescription = "Favorite",
                 modifier = Modifier
                     .clickable { onNavigationHome() }
-                    .size(40.dp)
+                    .size(40.dp),
+                tint = Color.White
             )
 
             Spacer(modifier = Modifier.padding(15.dp))
 
             Text(
                 text = "${game.nombre}", modifier = Modifier.weight(2f),
-                fontSize = 18.sp
+                fontSize = 18.sp, color = Color.White
             )
 
             Icon(
@@ -94,13 +98,13 @@ fun DetailScreen(
                 modifier = Modifier
                     .weight(1f)
                     .size(30.dp)
-                    .clickable { onNavigationBuy() }
-            )
+                    .clickable { onNavigationBuy()},
+                tint = Color.White)
         }
 
         //BODY
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().background(Color.Gray.copy(alpha = 0.3f)),
             horizontalArrangement = Arrangement.SpaceBetween, // Empuja elementos a los extremos
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -109,24 +113,24 @@ fun DetailScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 Alignment.CenterVertically
             ) {
-                Text("Uds: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
+                Text("Uds: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
                 //Restar
                 IconButton({ if (quantity > 0) quantity-- }) {
-                    Text("-", fontSize = 20.sp)
+                    Text("-", fontSize = 20.sp, color = Color.White)
                 }
                 //Valor que cambia
-                Text(quantity.toString(), fontSize = 18.sp, modifier = Modifier.padding(16.dp))
+                Text(quantity.toString(), fontSize = 18.sp, modifier = Modifier.padding(16.dp), color = Color.White)
                 //Sumar
                 IconButton(
-                    { quantity++ },
-                    modifier = Modifier.border(BorderStroke(1.dp, Color.Black))
+                    { quantity++ }
                 ) {
-                    Text("+", fontSize = 20.sp)
+                    Text("+", fontSize = 20.sp, color = Color.White)
                 }
             }
-            Button({ addToBuy(quantity) }, border = BorderStroke(2.dp, Color.Black)) {
-                Text("Add", fontSize = 16.sp)
+            Button({ addToBuy(quantity) }) {
+                Text("Add", fontSize = 16.sp, color = Color.White)
             }
+
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -177,8 +181,8 @@ fun showInfo(game: Videogame, quantity: Int) {
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
-        Text(text = "Fecha salida: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
-        Text(text = "${game.fechaSalida}", fontSize = 15.sp)
+        Text(text = "Fecha salida: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(text = "${game.fechaSalida}", fontSize = 15.sp, color = Color.White)
     }
     Spacer(modifier = Modifier.height(20.dp))
 
@@ -187,11 +191,11 @@ fun showInfo(game: Videogame, quantity: Int) {
         modifier = Modifier
             .fillMaxWidth()
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
-            .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+            .padding(4.dp), // Padding INTERNO para que el texto no toque el borde
     ) {
         //text2
-        Text(text = "Plataformas: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
-        Text(text = "${game.plataforma}", fontSize = 15.sp)
+        Text(text = "Plataformas: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(text = "${game.plataforma}", fontSize = 15.sp, color = Color.White)
     }
     Spacer(modifier = Modifier.height(20.dp))
 
@@ -203,8 +207,8 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         //text3
-        Text(text = "Precio: ", fontSize = 15.sp, fontWeight = FontWeight.Bold)
-        Text(text = "${game.precio} €", fontSize = 15.sp)
+        Text(text = "Precio: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(text = "${game.precio} €", fontSize = 15.sp, color = Color.White)
     }
     Spacer(modifier = Modifier.height(20.dp))
 
@@ -215,7 +219,7 @@ fun showInfo(game: Videogame, quantity: Int) {
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
-        Text("Total uds: $quantity", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+        Text("Total uds: $quantity", fontWeight = FontWeight.Bold, fontSize = 15.sp, color = Color.White)
     }
     Spacer(modifier = Modifier.height(30.dp))
 
@@ -229,7 +233,8 @@ fun showInfo(game: Videogame, quantity: Int) {
         Text(
             "Total a pagar: ${game.precio * quantity}",
             fontWeight = FontWeight.Bold,
-            fontSize = 15.sp
+            fontSize = 15.sp,
+            color = Color.White
         )
     }
 }
