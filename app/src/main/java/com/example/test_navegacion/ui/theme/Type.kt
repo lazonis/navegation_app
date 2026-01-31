@@ -19,12 +19,12 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 13.sp,
         lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = 0.1.sp
     ),
     labelLarge = TextStyle(
         fontFamily = personaFont,
         fontWeight = FontWeight.Medium,
-        fontSize = 14.sp,
+        fontSize = 10.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.1.sp
     )
