@@ -23,12 +23,13 @@ fun HomeScreen(
     onNavigateBuy: () -> Unit,
 ) {
     //Guardamos el context que nos permite acceder a los recursos de dentro de /res/raw
-    val context = LocalContext.current
+    val context = LocalContext.current.resources
+
     //Variable que guarda una función anónima
     // -> generar lista de Objetos Videogame
     val lJuegos = remember {
         try {
-            val input = context.resources.openRawResource(com.example.test_navegacion.R.raw.data)
+            val input = context.openRawResource(com.example.test_navegacion.R.raw.data)
 
             val jsonString = input.bufferedReader().use { it.readText() }
 
@@ -36,7 +37,6 @@ fun HomeScreen(
 
             // D. Convertir a Lista (La magia de Kotlinx)
             jsonTools.decodeFromString<List<VideogameItem>>(jsonString)
-
         } catch (e: Exception) {
             e.printStackTrace()
             emptyList<VideogameItem>()
@@ -53,6 +53,7 @@ fun HomeScreen(
             items(lJuegos) { juego ->
                 Text(juego.nombre)
                 println(juego.nombre)
+
             }
         }
     }
