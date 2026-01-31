@@ -2,6 +2,8 @@ package com.example.test_navegacion.screens
 
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,19 +17,19 @@ fun Navegation(gameList: List<Videogame>) {
 
     val navCont = rememberNavController()
 
+    //Carrito -> estado global para guardar las cantidades elegidas de cada jueguito
+    var selectedItems = remember { mutableStateMapOf<Videogame, Int>() }
+
 
     NavHost(
         navController = navCont,
         startDestination = "welcome"
     ) {
 
-
         composable("welcome") {
-
             WelcomeScreen(
                 onNavigationHome = { navCont.navigate("home") },
                 onNavigationDenied = { navCont.navigate("denied") })
-
         }
 
         composable("denied") {
@@ -35,7 +37,6 @@ fun Navegation(gameList: List<Videogame>) {
             DeniedScreen()
 
         }
-
 
         composable("home") {
 
@@ -70,7 +71,10 @@ fun Navegation(gameList: List<Videogame>) {
                             }
                         }
                     },
-
+                    addToBuy = { addQuantity ->
+                        val actualQuantity = selectedItems[gameFound] ?: 0
+                        selectedItems[gameFound] = actualQuantity + addQuantity
+                    },
                     onNavigationBuy = { navCont.navigate("buy") },
                     game = gameFound
                 )
@@ -90,7 +94,6 @@ fun Navegation(gameList: List<Videogame>) {
                         }
                     }
                 },
-
                 onNavigationHome = {
                     navCont.navigate("home") {
                         popUpTo("home") {
@@ -98,9 +101,10 @@ fun Navegation(gameList: List<Videogame>) {
                         }
                     }
                 },
-
-                onNavigationDetail = { navCont.navigate("Detail") })
-
+                selectedItems,
+                onRemoveGame = { game ->
+                    selectedItems.remove(game)
+                })
         }
 
     }
