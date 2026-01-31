@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 
@@ -32,7 +33,7 @@ fun WelcomeScreen(onNavigationHome: () -> Unit, onNavigationDenied: () -> Unit) 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Text(text = "(Pantalla Welcome)")
+            Text(text = "(Pantalla Welcome)",color = Color.White)
 
 
             Spacer(modifier = Modifier.padding(20.dp))
@@ -55,7 +56,7 @@ fun WelcomeScreen(onNavigationHome: () -> Unit, onNavigationDenied: () -> Unit) 
             }
             ) {
 
-                Text(text = "Acceder")
+                Text(text = "Acceder",color = Color.White)
 
             }
 

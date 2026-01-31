@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -33,6 +34,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.sp
 import com.example.test_navegacion.R
 
 
@@ -41,13 +43,13 @@ import com.example.test_navegacion.R
 @Composable
 fun HomeScreen(
     onNavigationWelcome: () -> Unit,
-    onNavigationDetail: (String) -> Unit,
+    onNavigationDetail: (Int?) -> Unit,
     onNavigationBuy: () -> Unit,
     lgames: List<Videogame>,
 ) {
 
     var juego by remember { mutableStateOf<Videogame?>(Videogame(
-        0, "Ninguno",
+        0, "Not selected",
         precio = 0.0,
         plataforma = listOf(),
         fechaSalida = "0",
@@ -55,34 +57,44 @@ fun HomeScreen(
 
     //Guardamos el context que nos permite acceder a los recursos de dentro de /res/raw
 
-    Column(modifier = Modifier.background(Color.Red).padding(18.dp).fillMaxSize()) {
+    Column(modifier = Modifier.padding(15.dp).fillMaxSize()) {
 
-        Row(modifier = Modifier.background(Color.Blue).fillMaxWidth().height(70.dp).padding(10.dp),
+        Row(modifier = Modifier.fillMaxWidth().height(70.dp).padding(10.dp),
             verticalAlignment = Alignment.CenterVertically){
 
             Icon(
                 Icons.Default.ArrowBack,
-                contentDescription = "Favorite"
+                contentDescription = "Favorite",
+                modifier = Modifier.clickable{ onNavigationWelcome() }.size(40.dp),
+                tint = Color.White
             )
 
-            Text("INICIO / HOME", modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.padding(15.dp))
+
+            Text(text = "HOME", modifier = Modifier.weight(2f),
+                fontSize = 22.sp,
+                color = Color.White)
 
             Icon(
                 imageVector = Icons.Default.ShoppingCart,
                 contentDescription = "Favorite",
+                modifier = Modifier.weight(1f).size(30.dp).clickable{onNavigationBuy()},
+                tint = Color.White
             )
 
-            Button(onClick = { onNavigationWelcome() },
-                    modifier = Modifier.width(110.dp).height(40.dp)) {
-                Text("Detalles")
+            Button(onClick = { onNavigationDetail(juego?.id)},
+                    modifier = Modifier.width(110.dp).height(40.dp).weight(2f)) {
+                Text("Details",color = Color.White)
             }
 
         }
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-        Text(text = "Juego seleccionado: ${juego?.nombre}")
-
+        Row(modifier = Modifier.fillMaxWidth().height(50.dp).background(Color.Gray.copy(alpha = 0.3f),RoundedCornerShape(16.dp)).padding(10.dp),
+            verticalAlignment = Alignment.CenterVertically){
+        Text(text = "Game Selected: ${juego?.nombre}",color = Color.White)
+        }
         Spacer(modifier = Modifier.padding(20.dp))
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -96,8 +108,8 @@ fun HomeScreen(
                                         ,
                     verticalAlignment = Alignment.CenterVertically){
 
-                    Text(game.nombre, modifier = Modifier.weight(1f))
-                    Text(game.precio.toString() + " €")
+                    Text(game.nombre, modifier = Modifier.weight(1f),color = Color.White)
+                    Text(game.precio.toString() + " €",color = Color.White)
                     //Al hacer click en el botón, elevamos el id hacia arriba
 
                 }
