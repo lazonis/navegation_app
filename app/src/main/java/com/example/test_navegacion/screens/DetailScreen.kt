@@ -109,7 +109,7 @@ fun DetailScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(
-                modifier = Modifier.width(200.dp),
+                modifier = Modifier.width(200.dp).padding(10.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 Alignment.CenterVertically
             ) {
@@ -127,7 +127,7 @@ fun DetailScreen(
                     Text("+", fontSize = 20.sp, color = Color.White)
                 }
             }
-            Button({ addToBuy(quantity) }) {
+            Button({ addToBuy(quantity) }, modifier = Modifier.padding(5.dp)) {
                 Text("Add", fontSize = 16.sp, color = Color.White)
             }
 
