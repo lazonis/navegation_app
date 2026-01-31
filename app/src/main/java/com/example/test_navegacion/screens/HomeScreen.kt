@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.test_navegacion.data.Videogame
-import com.example.test_navegacion.data.getV
 
 
 @Composable

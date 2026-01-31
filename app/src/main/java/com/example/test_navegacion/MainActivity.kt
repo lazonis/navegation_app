@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.test_navegacion.data.getV
 import com.example.test_navegacion.screens.Navegation
 import com.example.test_navegacion.ui.theme.Test_navegacionTheme
 

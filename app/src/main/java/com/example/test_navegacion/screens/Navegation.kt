@@ -1,17 +1,13 @@
 package com.example.test_navegacion.screens
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.test_navegacion.data.getV
+import com.example.test_navegacion.data.getVideogameList
 
 @Composable
 
@@ -20,9 +16,7 @@ fun Navegation(){
     val navCont = rememberNavController()
 
     val context = LocalContext.current
-    val gameList = getV(context)
-
-    var id by remember { mutableStateOf(0) }
+    val gameList = getVideogameList(context)
 
     NavHost(
         navController = navCont,

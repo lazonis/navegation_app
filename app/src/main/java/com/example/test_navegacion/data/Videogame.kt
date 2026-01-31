@@ -15,7 +15,7 @@ data class Videogame(
 )
 
 
-fun getV(context : Context) : List<Videogame>{
+fun getVideogameList(context : Context) : List<Videogame>{
 
     val inputStream = context.resources.openRawResource(R.raw.data)
 
