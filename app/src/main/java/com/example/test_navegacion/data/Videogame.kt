@@ -1,20 +1,17 @@
 package com.example.test_navegacion.data
 
 import android.content.Context
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
+import com.example.test_navegacion.R
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+import java.io.InputStreamReader
 
 @Serializable
 data class Videogame(
-    val fechaSalida: String,
-    val id: String,
-    val imgNombre: String,
+    val id: Int,
     val nombre: String,
-    val plataforma: List<String>,
-    val precio: String
+    val precio: Double,
+    val plataforma : List<String>,
+    val fechaSalida : String,
+    val imgNombre : String
 )
-
-
 

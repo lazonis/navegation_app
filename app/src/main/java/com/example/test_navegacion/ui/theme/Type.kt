@@ -8,11 +8,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.test_navegacion.R
 
-
+// Set of Material typography styles to start with
 val personaFont = FontFamily(
     Font(R.font.persona3, FontWeight.Normal )
 )
-// Set of Material typography styles to start with
+
 val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = personaFont,
@@ -20,7 +20,7 @@ val Typography = Typography(
         fontSize = 13.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
-    ), /*Para que la fuente se ubique dentro de los botones o textfields tb*/
+    ),
     labelLarge = TextStyle(
         fontFamily = personaFont,
         fontWeight = FontWeight.Medium,
@@ -44,4 +44,6 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     )
     */
+
+
 )

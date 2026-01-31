@@ -4,8 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalResources
 import com.example.test_navegacion.data.Videogame
 import com.example.test_navegacion.screens.Navigation
@@ -18,21 +23,26 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Test_navegacionTheme {
-                Navigation(getGameList())
+                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
+
+                    Column(modifier = Modifier.padding(innerPadding)) {
+                        Navigation(getGameList())
+
+                    }
+                }
             }
         }
     }
 }
 
-
 @Composable
 fun getGameList() : List<Videogame>{
-    val context = LocalResources.current
+    val resources = LocalResources.current
     //Variable que guarda una función anónima
     // -> generar lista de Objetos Videogame
     val lgames = remember {
         try {
-            val input = context.openRawResource(R.raw.data)
+            val input = resources.openRawResource(R.raw.data)
 
             val jsonString = input.bufferedReader().use { it.readText() }
 

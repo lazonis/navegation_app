@@ -1,83 +1,94 @@
 package com.example.test_navegacion.screens
 
+import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
-import androidx.navigation.Navigation
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.test_navegacion.data.Videogame
 
 @Composable
-fun Navigation(lgames : List<Videogame>){
 
-    //Variable de navControler para controlar navegación entre páginas
-    val nController = rememberNavController() //remember(?)
+fun Navegation(gameList : List<Videogame>, context : Context){
 
-    //Componente que controla rutas de navegación (como un mapa)
+    val navCont = rememberNavController()
+
+
     NavHost(
-        navController = nController,
+        navController = navCont,
         startDestination = "welcome"
-    )
-    {
+    ) {
 
-        composable("welcome") //route = id de la pantalla donde navegamos
-        {
-            WelcomeScreen(
-                //busca el id "home" y crea un composable de tipo HomeScreen
-                { nController.navigate("home")},
-                {nController.navigate("denied")},
-            )
+
+        composable("welcome") {
+
+            WelcomeScreen(onNavigationHome = { navCont.navigate("home")},
+                          onNavigationDenied = { navCont.navigate("denied")})
+
         }
 
-        //TODO: IMPORT
-        composable("home"){
-            //Teniendo en principio dos pantallas, popBackStack elimina la última
-            //de la pila -> en este caso siempre "home"
-            HomeScreen(
-                //Reset
-                {nController.popBackStack() },
-                //Detalles -> id concreto del juego que queremos ver
-                { id -> nController.navigate("detail/$id")},
-                //Compra
-                {nController.navigate("buy")},
-                lgames
-            )
+        composable("denied") {
+
+            DeniedScreen()
+
         }
 
 
-        composable("denied"){
-            DeniedScreen(
-                {nController.popBackStack()}
-            )
+        composable ("home") {
+
+            HomeScreen(onNavigationWelcome = { navCont.popBackStack() },
+                        onNavigationDetail = { idClick -> navCont.navigate("detail/$idClick") },
+                        lgames = gameList)
+
         }
-        composable("detail/{id}", listOf(navArgument("id") { type = NavType.StringType})
-        ){
-            //documentar funcionamiento, rarete
+
+        composable ("detail/{idGame}",
+                    listOf(navArgument("idGame"){ type = NavType.IntType})) {
+
             backStackEntry ->
-            val id =  backStackEntry.arguments?.getString("id")
 
-            val selected = lgames.find { it.nombre == id }
+            val gameId = backStackEntry.arguments?.getInt("idGame") ?: 0
 
-            selected?.let{
-                game ->
-                DetailScreen(
-                    game = game,
-                    onNavigateToHome = {nController.popBackStack()}
-                ){}
+            val gameFound = gameList.find { it.id == gameId }
+
+
+            if(gameFound != null){
+                DetailScreen(onNavigationHome = {navCont.navigate("home"){
+
+                    popUpTo("home"){
+                        inclusive = true
+                    }
+                } },
+
+                    onNavigationBuy = {navCont.navigate("buy")},
+                    game = gameFound, context = context)
+
             }
 
-        }
 
+        }
 
         composable("buy"){
-            BuyScreen(
-                {nController.navigate("home")},
-                {nController.navigate("detail")},
-                {nController.navigate("welcome")}
-            )
+
+            BuyScreen(onNavigationWelcome = {navCont.navigate("welcome"){
+                        popUpTo("welcome"){
+                            inclusive = true
+                        }
+            } },
+
+                      onNavigationHome = {navCont.navigate("home"){
+                          popUpTo("home"){
+                              inclusive = true
+                          }
+                      }},
+
+                      onNavigationDetail = {navCont.navigate("Detail")})
+
         }
+
     }
 
 }

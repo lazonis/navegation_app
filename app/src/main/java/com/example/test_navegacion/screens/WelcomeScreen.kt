@@ -1,12 +1,12 @@
 package com.example.test_navegacion.screens
 
-import android.content.Context
-import android.widget.ImageView
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ContextualFlowRow
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -14,63 +14,69 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 
-//PARA UTILIZAR MIS PROPIOS RECURSOS DEBES IMPLEMENTARLA DESDE TU PROPIO PROYECTO
-import com.example.test_navegacion.R
+
 @Composable
-fun WelcomeScreen(onNavigateHome: () -> Unit, onNavigateDenied: () -> Unit) {
+fun WelcomeScreen(onNavigationHome : () -> Unit, onNavigationDenied : () -> Unit){
 
-    //variable para guardar el input (edad) y operar con él
-    var edad by remember { mutableStateOf("") }
+    var text by remember {mutableStateOf("")}
 
-    //variable para controlar si mostramos error
-    var hasError by remember { mutableStateOf(false) }
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
 
-    //CENTRADO DE ELEMENTOS
-    Column(modifier = Modifier.padding(50.dp)) {
+    Column(modifier = Modifier.padding(50.dp),
+        horizontalAlignment = Alignment.CenterHorizontally) {
 
-        //LABEL
-        Text("Welcome to you game shop")
-        Text("Insert your age:")
+        Text(text = "(Pantalla Welcome)")
 
-        //CAJA RELLENO
+
+        Spacer(modifier = Modifier.padding(20.dp))
+
         TextField(
-            value = edad,
-            onValueChange = { newText -> edad = newText },
-
-            isError = hasError,
-            supportingText = {
-                if (hasError) {
-                    Text("Este campo es obligatorio", color = MaterialTheme.colorScheme.error)
-                }
-            }
+            value = text,
+            onValueChange = { nuevoTexto -> text = nuevoTexto },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-        //CUANDO HAGAMOS CLICK EN EL BOTÓN
+
+        Spacer(modifier = Modifier.padding(20.dp))
+
         Button(onClick = {
-            //Hay que arreglar el input de Strings para que solo acepte enteros
-            //Si está vacío el text field -> error, sino
-            if (edad.isBlank()) {
-                hasError = true
-            } else {
-                hasError = false
+
+            if(validateAge(text)) {
+                onNavigationHome()
             }
-            //Compruebo edad
-            if (validateAge(edad.toIntOrNull())) {
-                onNavigateHome()
-            } else { //Si no, página con la ley
-                onNavigateDenied()
+            else {
+                onNavigationDenied()
             }
-        })
-        { Text("Submit") }
+        }
+        )  {
+
+            Text( text = "Acceder")
+
+        }
 
     }
+    }
+
 }
 
-fun validateAge(edad: Int?): Boolean {
-    if (edad != null) {
-        return edad >= 18
-    };
-    return false;
+
+fun validateAge( text : String ) : Boolean {
+
+    if(text.isEmpty()){
+        return false
+    }
+
+    else {
+
+        if (text.toInt() >= 18) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 }
