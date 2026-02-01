@@ -1,5 +1,6 @@
 package com.example.test_navegacion.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,20 +25,22 @@ fun DeniedScreen() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(20.dp)
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(rememberScrollState()).background(Color.Gray.copy(alpha = 0.3f))
     ) {
         Text(
             text = "📜 ROYAL DECREE Nº 404/2026: ABSOLUTE SERIOUSNESS ACT",
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier.padding(10.dp)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = "WHEREAS: Laughter distracts from productivity, leisure clouds judgment, and fun is, ultimately, a structural waste of time.",
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier.padding(10.dp)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -45,35 +48,40 @@ fun DeniedScreen() {
         Text(
             text = "IT IS DECREED:",
             fontWeight = FontWeight.Bold,
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier.padding(10.dp)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
             text = "1. PROHIBITION OF ENTERTAINMENT: The use of any software, mechanism, or activity that generates \"fun,\" \"enjoyment,\" or \"entertainment\" without a prior educational or punitive purpose is strictly prohibited.",
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier.padding(10.dp)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
             text = "2. UNIVERSAL AGE RESTRICTION: Given that maturity is a subjective and dangerous concept, video games are restricted to citizens of exactly 99 years old. If you are 98, you are too young; if you are 100, you have played enough.",
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier.padding(10.dp)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
             text = "3. PENALTIES: Any citizen caught enjoying a game shall be sentenced to stare at a blank wall for 14 hours while listening to an audiobook about the reproduction of garden snails.",
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier.padding(10.dp)
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
             text = "Issued at the Palace of Boredom, on January 31st, 2026.",
-            color = Color.LightGray
+            color = Color.LightGray,
+            modifier = Modifier.padding(10.dp)
         )
     }
 }
