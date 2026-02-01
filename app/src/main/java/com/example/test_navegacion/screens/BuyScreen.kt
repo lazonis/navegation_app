@@ -30,6 +30,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.test_navegacion.data.Videogame
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 
 @Composable
@@ -83,11 +85,12 @@ fun BuyScreen(
             Row {
                 Column {
                     Text(
-                        "Total a pagar: ${selectedItems.entries.sumOf { it.key.precio * it.value }}€",
+                        "Total a pagar: ${BigDecimal(selectedItems.entries.sumOf { it.key.precio * it.value }).setScale(2,
+                            RoundingMode.HALF_UP).toDouble()}€",
                         color = Color.White
                     )
                     Text(
-                        "Total items: ${selectedItems.values.size}",
+                        "Total items: ${selectedItems.values.sumOf { it }}",
                         color = Color.White
                     )
                     Button(onClick = onNavigationHome, modifier = Modifier.fillMaxWidth()) {
@@ -114,7 +117,8 @@ fun BuyScreen(
                     ) {
                         Text(text = game.nombre, color = Color.White)
                         Text(text = "Cantidad : $quantity", color = Color.White)
-                        Text(text = "Subtotal: ${game.precio * quantity} €", color = Color.White)
+                        Text(text = "Subtotal: ${BigDecimal(game.precio * quantity).setScale(2,
+                            RoundingMode.HALF_UP).toDouble()} €", color = Color.White)
                         IconButton({ onRemoveGame(game) },
                             modifier = Modifier.padding(0.dp,0.dp,20.dp,0.dp)
                                 .background(Color.White, RoundedCornerShape(70.dp))) {

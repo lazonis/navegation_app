@@ -38,6 +38,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.test_navegacion.data.Videogame
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 @Composable
 fun DetailScreen(
@@ -247,7 +249,7 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         Text(
-            "Total a pagar: ${game.precio * quantity}",
+            "Total a pagar: ${BigDecimal(game.precio * quantity).setScale(2, RoundingMode.HALF_UP).toDouble()}",
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
             color = Color.White
