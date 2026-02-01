@@ -1,11 +1,13 @@
 package com.example.test_navegacion.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -69,7 +71,7 @@ fun BuyScreen(
         }
         //BODY
         Column(
-            modifier = Modifier.padding(20.dp),
+            modifier = Modifier.padding(20.dp).fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
@@ -80,7 +82,7 @@ fun BuyScreen(
                         color = Color.White
                     )
                     Text(
-                        "Total items: ${selectedItems.size}",
+                        "Total items: ${selectedItems.values.size}",
                         color = Color.White
                     )
                     Button(onClick = onNavigationHome, modifier = Modifier.fillMaxWidth()) {
@@ -90,14 +92,21 @@ fun BuyScreen(
 
             }
 
-            LazyColumn() {
+            LazyColumn(modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(5.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 items(selectedItems.toList()) { (game, quantity) ->
-
+                Column(modifier = Modifier
+                    .fillMaxWidth()
+                    .border(1.dp, Color.White, RoundedCornerShape(8.dp))
+                    .background(Color.Blue).padding(50.dp,10.dp,0.dp,10.dp)) {
                         Text(text = game.nombre, color = Color.White)
-                        Text(text = "Cantidad : ${quantity.toString()} €", color = Color.White)
-                        Text(text = "Subtotal: ${game.precio * quantity}", color = Color.White)
+                        Text(text = "Cantidad : ${quantity.toString()}", color = Color.White)
+                        Text(text = "Subtotal: ${game.precio * quantity} €", color = Color.White)
 
-
+                }
                 }
 
             }
