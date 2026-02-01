@@ -20,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -30,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.test_navegacion.data.Videogame
+import com.example.test_navegacion.ui.theme.PurpleGrey40
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -93,7 +95,11 @@ fun BuyScreen(
                         "Total items: ${selectedItems.values.sumOf { it }}",
                         color = Color.White
                     )
-                    Button(onClick = onNavigationHome, modifier = Modifier.fillMaxWidth()) {
+                    Button(onClick = onNavigationHome, modifier = Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6CC4B1), // Color de fondo
+                        contentColor = Color.White // Color del texto
+                    )) {
                         Text("Keep looking", color = Color.White)
                     }
                 }
@@ -112,7 +118,7 @@ fun BuyScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .border(1.dp, Color.White, RoundedCornerShape(8.dp))
-                            .background(Color.Blue)
+                            .background(PurpleGrey40)
                             .padding(20.dp, 10.dp, 0.dp, 5.dp)
                     ) {
                         Text(text = game.nombre, color = Color.White)

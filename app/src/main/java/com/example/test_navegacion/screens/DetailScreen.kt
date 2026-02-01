@@ -21,6 +21,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -130,7 +131,11 @@ fun DetailScreen(
                     Text("+", fontSize = 20.sp, color = Color.White)
                 }
             }
-            Button({ addToBuy(quantity) }, modifier = Modifier.padding(5.dp)) {
+            Button({ addToBuy(quantity) },
+                colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF6CC4B1), // Color de fondo
+                contentColor = Color.White // Color del texto
+            ),modifier = Modifier.padding(5.dp)) {
                 Text("Add", fontSize = 16.sp, color = Color.White)
             }
 
@@ -250,7 +255,7 @@ fun showInfo(game: Videogame, quantity: Int) {
     ) {
         Text( //BigDecimal se le pasa un double, y se utiliza el metodo setScale,
               // mediante un numero (decimales a redondear) y una funcion, redondea a la cantidad seleccionada y lo pasa a double
-            "Total to pay: ${BigDecimal(game.precio * quantity).setScale(2, RoundingMode.HALF_UP).toDouble()}",
+            "Total to pay: ${BigDecimal(game.precio * quantity).setScale(2, RoundingMode.HALF_UP).toDouble()}€",
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
             color = Color.White

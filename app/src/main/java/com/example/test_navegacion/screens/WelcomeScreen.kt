@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -65,7 +66,11 @@ fun WelcomeScreen(onNavigationHome: () -> Unit, onNavigationDenied: () -> Unit) 
                 } else {
                     onNavigationDenied()
                 }
-            }
+            },
+                colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF6CC4B1), // Color de fondo
+                contentColor = Color.White // Color del texto
+            )
             ) {
 
                 Text(text = "ENTER", color = Color.White)
