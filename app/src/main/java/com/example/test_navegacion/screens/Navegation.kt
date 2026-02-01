@@ -34,7 +34,7 @@ fun Navegation(gameList: List<Videogame>) {
 
         composable("denied") {
 
-            DeniedScreen()
+            DeniedScreen({navCont.navigate("welcome")})
 
         }
 
