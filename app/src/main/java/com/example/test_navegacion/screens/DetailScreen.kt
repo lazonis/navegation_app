@@ -32,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -39,6 +40,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.test_navegacion.data.Videogame
+import com.example.test_navegacion.ui.theme.PurpleGrey40
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -186,8 +188,11 @@ fun showInfo(game: Videogame, quantity: Int) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp)) // Borde redondeado general
+            .background(PurpleGrey40) // Color de fondo
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+            .background(PurpleGrey40)
     ) {
         Text(
             text = "Release date: ",
@@ -203,9 +208,12 @@ fun showInfo(game: Videogame, quantity: Int) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp)) // Borde redondeado general
+            .background(PurpleGrey40) // Color de fondo
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
-            .padding(4.dp), // Padding INTERNO para que el texto no toque el borde
-    ) {
+            .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+            .background(PurpleGrey40)
+        ) {
         //text2
         Text(
             text = "Platforms: ",
@@ -221,8 +229,11 @@ fun showInfo(game: Videogame, quantity: Int) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp)) // Borde redondeado general
+            .background(PurpleGrey40) // Color de fondo
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+            .background(PurpleGrey40)
     ) {
         //text3
         Text(text = "Price: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
@@ -234,8 +245,11 @@ fun showInfo(game: Videogame, quantity: Int) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp)) // Borde redondeado general
+            .background(PurpleGrey40) // Color de fondo
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
+            .background(PurpleGrey40)
     ) {
         Text(
             "Total units: $quantity",
@@ -250,7 +264,9 @@ fun showInfo(game: Videogame, quantity: Int) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
+            .clip(RoundedCornerShape(10.dp)) // Borde redondeado general
+            .background(PurpleGrey40) // Color de fondo
+            .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado (solo el borde)
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         Text( //BigDecimal se le pasa un double, y se utiliza el metodo setScale,
