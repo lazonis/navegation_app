@@ -46,7 +46,13 @@ fun WelcomeScreen(onNavigationHome: () -> Unit, onNavigationDenied: () -> Unit) 
 
             TextField(
                 value = text,
-                onValueChange = { nuevoTexto -> text = nuevoTexto },
+                onValueChange = { nuevoTexto ->
+                    //Si está vacío nuevoTexto/texto = 0 -> pag denied
+                    //Si tod el texto son dígitos -> esos digitos = nuevoTexto
+                    if (nuevoTexto.isEmpty() || nuevoTexto.all { it.isDigit() }) {
+                    text = nuevoTexto
+                        //esta condición evita que podamos escribir cualquier cosa que
+                } },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
 
@@ -73,12 +79,9 @@ fun WelcomeScreen(onNavigationHome: () -> Unit, onNavigationDenied: () -> Unit) 
 
 
 fun validateAge(text: String): Boolean {
+    //Si el valor es null -> asocia 0 de base
+    val edad = text.toIntOrNull() ?: 0
 
-    if (text.isEmpty()) {
-        return false
-    } else {
-
-        return text.toInt() >= 18
-    }
+    return edad >= 18 && edad < 100
 
 }
