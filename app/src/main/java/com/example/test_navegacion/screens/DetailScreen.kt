@@ -111,7 +111,7 @@ fun DetailScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 Alignment.CenterVertically
             ) {
-                Text("Uds: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Text("Units: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
                 //Restar
                 IconButton({ if (quantity > 0) quantity-- }) {
                     Text("-", fontSize = 20.sp, color = Color.White)
@@ -185,8 +185,8 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         Text(
-            text = "Fecha salida: ",
-            fontSize = 15.sp,
+            text = "Release date: ",
+            fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White
         )
@@ -203,7 +203,7 @@ fun showInfo(game: Videogame, quantity: Int) {
     ) {
         //text2
         Text(
-            text = "Plataformas: ",
+            text = "Platforms: ",
             fontSize = 15.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White
@@ -220,7 +220,7 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         //text3
-        Text(text = "Precio: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(text = "Price: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
         Text(text = "${game.precio} €", fontSize = 15.sp, color = Color.White)
     }
     Spacer(modifier = Modifier.height(20.dp))
@@ -233,7 +233,7 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         Text(
-            "Total uds: $quantity",
+            "Total units: $quantity",
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
             color = Color.White
@@ -248,8 +248,9 @@ fun showInfo(game: Videogame, quantity: Int) {
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
-        Text(
-            "Total a pagar: ${BigDecimal(game.precio * quantity).setScale(2, RoundingMode.HALF_UP).toDouble()}",
+        Text( //BigDecimal se le pasa un double, y se utiliza el metodo setScale,
+              // mediante un numero (decimales a redondear) y una funcion, redondea a la cantidad seleccionada y lo pasa a double
+            "Total to pay: ${BigDecimal(game.precio * quantity).setScale(2, RoundingMode.HALF_UP).toDouble()}",
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
             color = Color.White
