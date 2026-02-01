@@ -13,17 +13,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -50,7 +46,10 @@ fun BuyScreen(
         //horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().height(70.dp).padding(15.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(70.dp)
+                .padding(15.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
@@ -64,14 +63,18 @@ fun BuyScreen(
             Spacer(modifier = Modifier.padding(10.dp))
 
 
-            Text(text = "ORDER DETAILS",
+            Text(
+                text = "ORDER DETAILS",
                 color = Color.White,
-                fontSize = 22.sp)
+                fontSize = 22.sp
+            )
 
         }
         //BODY
         Column(
-            modifier = Modifier.padding(20.dp).fillMaxHeight(),
+            modifier = Modifier
+                .padding(20.dp)
+                .fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
@@ -92,21 +95,26 @@ fun BuyScreen(
 
             }
 
-            LazyColumn(modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(5.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                items(selectedItems.toList()) { (game, quantity) ->
-                Column(modifier = Modifier
+            LazyColumn(
+                modifier = Modifier
                     .fillMaxWidth()
-                    .border(1.dp, Color.White, RoundedCornerShape(8.dp))
-                    .background(Color.Blue).padding(50.dp,10.dp,0.dp,10.dp)) {
+                    .fillMaxHeight()
+                    .padding(5.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(selectedItems.toList()) { (game, quantity) ->
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .border(1.dp, Color.White, RoundedCornerShape(8.dp))
+                            .background(Color.Blue)
+                            .padding(50.dp, 10.dp, 0.dp, 10.dp)
+                    ) {
                         Text(text = game.nombre, color = Color.White)
-                        Text(text = "Cantidad : ${quantity.toString()}", color = Color.White)
+                        Text(text = "Cantidad : $quantity", color = Color.White)
                         Text(text = "Subtotal: ${game.precio * quantity} €", color = Color.White)
 
-                }
+                    }
                 }
 
             }

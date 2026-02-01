@@ -33,7 +33,7 @@ fun WelcomeScreen(onNavigationHome: () -> Unit, onNavigationDenied: () -> Unit) 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Text(text = "(Pantalla Welcome)",color = Color.White)
+            Text(text = "(Pantalla Welcome)", color = Color.White)
 
 
             Spacer(modifier = Modifier.padding(20.dp))
@@ -56,7 +56,7 @@ fun WelcomeScreen(onNavigationHome: () -> Unit, onNavigationDenied: () -> Unit) 
             }
             ) {
 
-                Text(text = "Acceder",color = Color.White)
+                Text(text = "Acceder", color = Color.White)
 
             }
 
@@ -72,11 +72,7 @@ fun validateAge(text: String): Boolean {
         return false
     } else {
 
-        if (text.toInt() >= 18) {
-            return true
-        } else {
-            return false
-        }
+        return text.toInt() >= 18
     }
 
 }
