@@ -83,7 +83,7 @@ fun BuyScreen(
             Row {
                 Column {
                     Text(
-                        "Total a pagar: ${selectedItems.entries.sumOf { it.key.precio * it.value }}€",
+                        "Total to pay: ${selectedItems.entries.sumOf { it.key.precio * it.value }}€",
                         color = Color.White
                     )
                     Text(
@@ -91,7 +91,7 @@ fun BuyScreen(
                         color = Color.White
                     )
                     Button(onClick = onNavigationHome, modifier = Modifier.fillMaxWidth()) {
-                        Text("Seguir Comprando", color = Color.White)
+                        Text("Keep looking", color = Color.White)
                     }
                 }
 
@@ -113,7 +113,7 @@ fun BuyScreen(
                             .padding(20.dp, 10.dp, 0.dp, 5.dp)
                     ) {
                         Text(text = game.nombre, color = Color.White)
-                        Text(text = "Cantidad : $quantity", color = Color.White)
+                        Text(text = "Quantity : $quantity", color = Color.White)
                         Text(text = "Subtotal: ${game.precio * quantity} €", color = Color.White)
                         IconButton({ onRemoveGame(game) },
                             modifier = Modifier.padding(0.dp,0.dp,20.dp,0.dp)

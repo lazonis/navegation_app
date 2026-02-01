@@ -109,7 +109,7 @@ fun DetailScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 Alignment.CenterVertically
             ) {
-                Text("Uds: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Text("Units: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
                 //Restar
                 IconButton({ if (quantity > 0) quantity-- }) {
                     Text("-", fontSize = 20.sp, color = Color.White)
@@ -183,8 +183,8 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         Text(
-            text = "Fecha salida: ",
-            fontSize = 15.sp,
+            text = "Release date: ",
+            fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White
         )
@@ -201,7 +201,7 @@ fun showInfo(game: Videogame, quantity: Int) {
     ) {
         //text2
         Text(
-            text = "Plataformas: ",
+            text = "Platforms: ",
             fontSize = 15.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White
@@ -218,7 +218,7 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         //text3
-        Text(text = "Precio: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(text = "Price: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
         Text(text = "${game.precio} €", fontSize = 15.sp, color = Color.White)
     }
     Spacer(modifier = Modifier.height(20.dp))
@@ -231,7 +231,7 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         Text(
-            "Total uds: $quantity",
+            "Total units: $quantity",
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
             color = Color.White
@@ -247,7 +247,7 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
         Text(
-            "Total a pagar: ${game.precio * quantity}",
+            "Total to pay: ${game.precio * quantity}",
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
             color = Color.White
