@@ -1,8 +1,5 @@
 package com.example.test_navegacion.screens
 
-import android.R
-import android.graphics.Color.alpha
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,32 +18,26 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.SegmentedButtonDefaults.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.test_navegacion.data.Videogame
-import kotlin.times
 
 @Composable
 fun DetailScreen(
@@ -98,18 +89,23 @@ fun DetailScreen(
                 modifier = Modifier
                     .weight(1f)
                     .size(30.dp)
-                    .clickable { onNavigationBuy()},
-                tint = Color.White)
+                    .clickable { onNavigationBuy() },
+                tint = Color.White
+            )
         }
 
         //BODY
         Row(
-            modifier = Modifier.fillMaxWidth().background(Color.Gray.copy(alpha = 0.3f)),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Gray.copy(alpha = 0.3f)),
             horizontalArrangement = Arrangement.SpaceBetween, // Empuja elementos a los extremos
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(
-                modifier = Modifier.width(200.dp).padding(10.dp),
+                modifier = Modifier
+                    .width(200.dp)
+                    .padding(10.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 Alignment.CenterVertically
             ) {
@@ -119,7 +115,12 @@ fun DetailScreen(
                     Text("-", fontSize = 20.sp, color = Color.White)
                 }
                 //Valor que cambia
-                Text(quantity.toString(), fontSize = 18.sp, modifier = Modifier.padding(16.dp), color = Color.White)
+                Text(
+                    quantity.toString(),
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(16.dp),
+                    color = Color.White
+                )
                 //Sumar
                 IconButton(
                     { quantity++ }
@@ -181,7 +182,12 @@ fun showInfo(game: Videogame, quantity: Int) {
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
-        Text(text = "Fecha salida: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(
+            text = "Fecha salida: ",
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
         Text(text = "${game.fechaSalida}", fontSize = 15.sp, color = Color.White)
     }
     Spacer(modifier = Modifier.height(20.dp))
@@ -194,7 +200,12 @@ fun showInfo(game: Videogame, quantity: Int) {
             .padding(4.dp), // Padding INTERNO para que el texto no toque el borde
     ) {
         //text2
-        Text(text = "Plataformas: ", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(
+            text = "Plataformas: ",
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
         Text(text = "${game.plataforma}", fontSize = 15.sp, color = Color.White)
     }
     Spacer(modifier = Modifier.height(20.dp))
@@ -219,7 +230,12 @@ fun showInfo(game: Videogame, quantity: Int) {
             .border(1.dp, Color.Gray, shape = RoundedCornerShape(10.dp)) // Borde redondeado
             .padding(4.dp) // Padding INTERNO para que el texto no toque el borde
     ) {
-        Text("Total uds: $quantity", fontWeight = FontWeight.Bold, fontSize = 15.sp, color = Color.White)
+        Text(
+            "Total uds: $quantity",
+            fontWeight = FontWeight.Bold,
+            fontSize = 15.sp,
+            color = Color.White
+        )
     }
     Spacer(modifier = Modifier.height(30.dp))
 

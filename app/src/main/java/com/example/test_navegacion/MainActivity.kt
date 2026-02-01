@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Test_navegacionTheme {
-
+                //FONDO DE LA APLICACIÓN
                 Box(modifier = Modifier.fillMaxSize()) {
                     Image(
                         painter = painterResource(id = R.drawable.colorback),
@@ -38,7 +38,10 @@ class MainActivity : ComponentActivity() {
                     )
                 }
 
-                Scaffold(containerColor = Color.Transparent, modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    containerColor = Color.Transparent,
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
 
                     Column(modifier = Modifier.padding(innerPadding)) {
                         Navegation(getGameList())
