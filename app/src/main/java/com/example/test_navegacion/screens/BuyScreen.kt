@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -47,11 +48,7 @@ fun BuyScreen(
         //horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            modifier = Modifier
-                .background(Color.Transparent)
-                .fillMaxWidth()
-                .height(70.dp)
-                .padding(10.dp),
+            modifier = Modifier.fillMaxWidth().height(70.dp).padding(15.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
@@ -62,15 +59,12 @@ fun BuyScreen(
                     .size(40.dp),
                 tint = Color.White
             )
+            Spacer(modifier = Modifier.padding(10.dp))
 
-            Spacer(modifier = Modifier.padding(15.dp))
 
-            Text(text = "Order Details", color = Color.White, fontSize = 18.sp)
-
-            Button(onClick = { onNavigationWelcome() }) {
-                //TODO: FIX BUTTON SIZE
-                Text("RESET", color = Color.White)
-            }
+            Text(text = "ORDER DETAILS",
+                color = Color.White,
+                fontSize = 22.sp)
 
         }
         //BODY
@@ -85,6 +79,10 @@ fun BuyScreen(
                         "Total a pagar: ${selectedItems.entries.sumOf { it.key.precio * it.value }}€",
                         color = Color.White
                     )
+                    Text(
+                        "Total items: ${selectedItems.size}",
+                        color = Color.White
+                    )
                     Button(onClick = onNavigationHome, modifier = Modifier.fillMaxWidth()) {
                         Text("Seguir Comprando", color = Color.White)
                     }
@@ -95,17 +93,11 @@ fun BuyScreen(
             LazyColumn() {
                 items(selectedItems.toList()) { (game, quantity) ->
 
-                    Row(
-                        modifier = Modifier
-                            .background(Color.Blue, RoundedCornerShape(16.dp))
-
-                    ) {
-
                         Text(text = game.nombre, color = Color.White)
                         Text(text = "Cantidad : ${quantity.toString()} €", color = Color.White)
-                        Text(text = "Subtotal: ${game.precio * quantity}")
+                        Text(text = "Subtotal: ${game.precio * quantity}", color = Color.White)
 
-                    }
+
                 }
 
             }
