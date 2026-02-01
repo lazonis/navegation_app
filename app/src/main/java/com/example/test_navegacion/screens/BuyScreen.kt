@@ -62,8 +62,8 @@ fun BuyScreen(
                     .size(40.dp),
                 tint = Color.White
             )
-            Spacer(modifier = Modifier.padding(5.dp))
 
+            Spacer(modifier = Modifier.padding(5.dp))
 
             Text(
                 text = "ORDER DETAILS",
