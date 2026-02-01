@@ -18,8 +18,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -60,7 +62,7 @@ fun BuyScreen(
                     .size(40.dp),
                 tint = Color.White
             )
-            Spacer(modifier = Modifier.padding(10.dp))
+            Spacer(modifier = Modifier.padding(5.dp))
 
 
             Text(
@@ -108,12 +110,16 @@ fun BuyScreen(
                             .fillMaxWidth()
                             .border(1.dp, Color.White, RoundedCornerShape(8.dp))
                             .background(Color.Blue)
-                            .padding(50.dp, 10.dp, 0.dp, 10.dp)
+                            .padding(20.dp, 10.dp, 0.dp, 5.dp)
                     ) {
                         Text(text = game.nombre, color = Color.White)
                         Text(text = "Cantidad : $quantity", color = Color.White)
                         Text(text = "Subtotal: ${game.precio * quantity} €", color = Color.White)
-
+                        IconButton({ onRemoveGame(game) },
+                            modifier = Modifier.padding(0.dp,0.dp,20.dp,0.dp)
+                                .background(Color.White, RoundedCornerShape(70.dp))) {
+                            Icon(Icons.Default.Delete, contentDescription = "Eliminar")
+                        }
                     }
                 }
 
